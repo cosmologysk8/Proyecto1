@@ -10,6 +10,11 @@ public class Producto {
     private String descripcion;
     private LocalDate fechaCaducidad;
     private Almacen almacen;
+    private double precio;
+
+    public Producto(double precio) {
+        this.precio = precio;
+    }
 
     public Producto(int identificador, String codigo, String descripcion, LocalDate fechaCaducidad, Almacen almacen) {
         this.identificador = identificador;
