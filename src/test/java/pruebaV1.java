@@ -1,11 +1,14 @@
-import modelos.Factura;
-
-import static utilidades.UtilidadesFactura.esFactura;
-
+import modelos.Cliente;
+import utilidades.UtilidadesCliente;
 
 public class pruebaV1 {
 
     public static void main(String[] args) {
-        System.out.println(esFactura(new Factura()));
+
+        Cliente c1 = new Cliente(322,"8893542K","Juan","Garcia","Parque Sierra magina");
+        System.out.println(UtilidadesCliente.esDniValido(c1));
+
     }
+
+
 }
