@@ -2,7 +2,7 @@ package modelos;
 
 import java.util.Objects;
 
-public class Almacen {
+public class Almacen extends Producto {
 
     private int identificador;
     private String nombre;
