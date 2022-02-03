@@ -53,13 +53,13 @@ public class UtilidadesEmpresa {
 
     public Empleado getMejorPagado(List<Empresa> empresas){
 
-        List<Empresa> MejorPagado = new ArrayList<>();
+        List<Empleado> MejorPagado = new ArrayList<>();
 
         for (Empresa empr: empresas ){
             MejorPagado.addAll(empr.getEmpleados());
         }
 
-        for (Empleado emp: empresa){
+        for (Empresa emp: empresas){
 
         }
 
