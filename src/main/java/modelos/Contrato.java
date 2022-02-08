@@ -8,14 +8,16 @@ public class Contrato {
     private double salarioBase;
     private TipoContrato TipoContrato;
 
-    public Contrato(int identificador, double salarioBase) {
-        this.identificador = identificador;
-        this.salarioBase = salarioBase;
+    public Contrato(Contrato con) {
+        this.identificador = con.getIdentificador();
+        this.salarioBase = con.getSalarioBase();
+        this.TipoContrato = con.TipoContrato;
     }
 
-    public Contrato(Contrato cont){
-        this.identificador = cont.getIdentificador();
-        this.salarioBase = cont.getSalarioBase();
+    public Contrato(int identificador, double salarioBase, modelos.TipoContrato tipoContrato) {
+        this.identificador = identificador;
+        this.salarioBase = salarioBase;
+        TipoContrato = tipoContrato;
     }
 
     public Contrato() {
@@ -37,11 +39,20 @@ public class Contrato {
         this.salarioBase = salarioBase;
     }
 
+    public modelos.TipoContrato getTipoContrato() {
+        return TipoContrato;
+    }
+
+    public void setTipoContrato(modelos.TipoContrato tipoContrato) {
+        TipoContrato = tipoContrato;
+    }
+
     @Override
     public String toString() {
         return "Contrato{" +
                 "identificador=" + identificador +
                 ", salarioBase=" + salarioBase +
+                ", TipoContrato=" + TipoContrato +
                 '}';
     }
 
@@ -50,11 +61,11 @@ public class Contrato {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Contrato contrato = (Contrato) o;
-        return identificador == contrato.identificador && Double.compare(contrato.salarioBase, salarioBase) == 0;
+        return identificador == contrato.identificador && Double.compare(contrato.salarioBase, salarioBase) == 0 && TipoContrato == contrato.TipoContrato;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(identificador, salarioBase);
+        return Objects.hash(identificador, salarioBase, TipoContrato);
     }
 }
