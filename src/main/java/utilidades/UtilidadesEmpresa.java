@@ -1,8 +1,6 @@
 package utilidades;
 
-import modelos.Empleado;
-import modelos.Empresa;
-import modelos.TipoContrato;
+import modelos.*;
 
 import java.util.*;
 
@@ -32,7 +30,7 @@ public class UtilidadesEmpresa<Empleados2> {
             }
         }
 
-        EmpleadoSalario.sort(Comparator.comparing(s -> s.getContrato().getSalarioBase()))
+        EmpleadoSalario.sort(Comparator.comparing(s -> s.getContrato().getSalarioBase()));
         return EmpleadoSalario;
     }
 
@@ -51,7 +49,7 @@ public class UtilidadesEmpresa<Empleados2> {
         Empleado MejorPagado;
         List<Empleado> EmpleadosSalario = new ArrayList<>();
 
-        for (Empresa empr: empresas ){
+        for (Empresa empr: empresas){
             EmpleadosSalario.addAll(empr.getEmpleados());
         }
 
@@ -63,13 +61,13 @@ public class UtilidadesEmpresa<Empleados2> {
 
     }
 
-    public Map<TipoContrato, List<Empleado>> getEmpleadosPorTipoContrato(Empresa empresas){
+    public Map<TipoContrato, List<Empleado>> getEmpleadosPorTipoContrato(Empresa empresa){
         //Que devuelve un mapa de los empleados de la empresa agrupados por su
         //tipo de contrato
 
         Map<TipoContrato, List<Empleado>> Empleados2 = new HashMap<>();
 
-        for (Empleado tp: empresas.getEmpleados()){
+        for (Empleado tp: empresa.getEmpleados()){
             Empleados2.put(TipoContrato.Practicas, new ArrayList<>());
             Empleados2.put(TipoContrato.Temporal, new ArrayList<>());
             Empleados2.put(TipoContrato.Obrasyservicio, new ArrayList<>());
@@ -97,14 +95,34 @@ public class UtilidadesEmpresa<Empleados2> {
         Map<Empresa, Map<TipoContrato,List<Empleado>>> Empleados3 = new HashMap<>();
         
         for (Empresa emp: empresas){
-            emp.put(Empresa, TipoContrato.Practicas, new ArrayList<>());
+            Empleados3.put(emp, getEmpleadosPorTipoContrato(emp));
         }
-
+        return Empleados3;
     }
 
+    public List<Empleado> getEmpleadosPymePracticas(List<Empresa> empresas){
 
+        List<Empleado> Empleadostipo2 = new ArrayList<>();
 
+        for(Empresa emp : empresas){
+            if (emp.getEmpleados().equals(TipoContrato.Practicas) && emp.equals(TipoEmpresa.Pyme)) {
+                Empleadostipo2.add((Empleado) emp.getEmpleados());
+            }
+        }
 
-}
+        return Empleadostipo2;
+    }
+
+    public Map<Empresa,Empleado> getLosMejorPagadosPorEmpresa(List<Empresa> empresas){
+        Map<Empresa, Empleado> mejorPagado = new HashMap<>();
+
+        for (Empresa emp : empresas){
+            List<Empresa> empresas1 = new ArrayList<>();
+            empresas1.add(emp);
+            mejorPagado.put(emp, getMejorPagado(empresas1));
+        }
+        return mejorPagado;
+    }
+
 
 }

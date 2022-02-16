@@ -1,5 +1,6 @@
 package utilidades;
 
+import modelos.Cliente;
 import modelos.Factura;
 import modelos.LineaFactura;
 
@@ -37,6 +38,21 @@ public class UtilidadesFactura {
 
         return totalAPagar;
 
+    }
+
+    public Double gastoTotalCliente(List<Factura> facturas, Cliente cliente){
+        double gastotatalC = 0.0;
+
+
+        for (Factura c : facturas){
+            List<Cliente> listaltotal = new ArrayList<>();
+            listaltotal.add(c.getCliente());
+            if (listaltotal.get(0).equals(cliente)){
+                gastotatalC = c.getTotalAPagar();
+            }
+
+        }
+        return gastotatalC;
     }
 
 
