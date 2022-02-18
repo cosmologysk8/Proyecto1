@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UtilidadesFactura {
 
-    public static boolean esFactura(Factura factura){
+    public static boolean esFacturaVencida(Factura factura){
         LocalDate fechaV = factura.getFechaVencimiento();
         boolean res = fechaV.isAfter(LocalDate.now());
 
