@@ -55,7 +55,7 @@ public class UtilidadesEmpresa<Empleados2> {
 
         EmpleadosSalario.sort(Comparator.comparing(c -> c.getContrato().getSalarioBase()));
 
-        MejorPagado = EmpleadosSalario.get(0);
+        MejorPagado = EmpleadosSalario.get(EmpleadosSalario.size()-1);
 
         return MejorPagado;
 

@@ -55,6 +55,4 @@ public class UtilidadesFactura {
         return gastotatalC;
     }
 
-
-
 }
